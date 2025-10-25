@@ -12,14 +12,3 @@ a[href^="tel"] {
 .leaflet-container {
   z-index: 1 !important;
 }
-
-/* Prevent Safari iOS from applying rounded corners during scrolling */
-.service-item,
-.faq-item {
-  border-radius: 0 !important;
-  -webkit-border-radius: 0 !important;
-  -webkit-appearance: none;
-  appearance: none;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-}
