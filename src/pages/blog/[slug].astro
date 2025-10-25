@@ -1,0 +1,199 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import CallToAction from '../../components/CallToAction.astro';
+
+export interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+// get all blog post slugs
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post: CollectionEntry<'blog'>) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post }: Props = Astro.props;
+const { Content } = await post.render();
+
+function formatDate(date: Date): string {
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }).format(date);
+}
+---
+
+<ContentLayout title={`${post.data.title} - Samson Foot + Ankle`}>
+  <div class="max-w-4xl mx-auto mt-2">
+    <!-- back button -->
+    <div class="mb-8">
+      <a
+        href="/blog/"
+        class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200 no-underline"
+      >
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        back to blogs
+      </a>
+    </div>
+
+    <header class="mb-8">
+      <!-- image -->
+      {post.data.image && (
+        <div class="mb-8 rounded-lg overflow-hidden">
+          <img
+            src={post.data.image}
+            alt={post.data.title}
+            class="w-full h-64 md:h-80 object-cover"
+          />
+        </div>
+      )}
+
+      <!-- title -->
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+        {post.data.title}
+      </h1>
+
+      <!-- information -->
+      <div class="flex flex-wrap items-center gap-4 text-gray-600 mb-6">
+        <div class="flex items-center">
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+          </svg>
+          <time>{formatDate(post.data.publishDate)}</time>
+        </div>
+
+        <div class="flex items-center">
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+          </svg>
+          <span>{post.data.author}</span>
+        </div>
+      </div>
+
+      <!-- blog desc -->
+      <p class="text-lg text-gray-700 leading-relaxed border-l-4 border-blue-600 pl-6 italic">
+        {post.data.description}
+      </p>
+    </header>
+
+    <!-- content -->
+    <article class="prose prose-lg max-w-none mb-12">
+      <Content />
+    </article>
+
+    <!-- back to blogs -->
+    <div class="border-t border-gray-200 pt-8 mb-1">
+      <div class="flex justify-between items-center">
+        <a
+          href="/blog/"
+          class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200 no-underline"
+        >
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          back to blogs
+        </a>
+
+      </div>
+    </div>
+
+    <!-- call action -->
+    <CallToAction
+      title="Ready to Experience Direct-Pay Care?"
+      description="Take your next best step toward personalized podiatric treatment."
+    />
+  </div>
+</ContentLayout>
+
+<style>
+  .prose {
+    color: #374151;
+    line-height: 1.75;
+  }
+
+  .prose h1 {
+    color: #111827;
+    font-weight: 800;
+    font-size: 2.25rem;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    line-height: 1.1111111;
+  }
+
+  .prose h2 {
+    color: #111827;
+    font-weight: 700;
+    font-size: 1.875rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.3333333;
+  }
+
+  .prose h3 {
+    color: #111827;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-top: 1.6rem;
+    margin-bottom: 0.6rem;
+    line-height: 1.6;
+  }
+
+  .prose p {
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .prose strong {
+    color: #111827;
+    font-weight: 600;
+  }
+
+  .prose a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .prose a:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+  }
+
+  .prose blockquote {
+    font-weight: 500;
+    font-style: italic;
+    color: #111827;
+    border-left-width: 0.25rem;
+    border-left-color: #e5e7eb;
+    quotes: "\201C""\201D""\2018""\2019";
+    margin-top: 1.6rem;
+    margin-bottom: 1.6rem;
+    padding-left: 1rem;
+  }
+
+  .prose ul {
+    list-style-type: disc;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    padding-left: 1.625rem;
+  }
+
+  .prose ol {
+    list-style-type: decimal;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    padding-left: 1.625rem;
+  }
+
+  .prose li {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+</style>

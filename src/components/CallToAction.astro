@@ -1,0 +1,30 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+  showContactButton?: boolean;
+}
+
+const {
+  title = "Ready to Take Your Next Best Step?",
+  description = "Experience the freedom of direct podiatric care.",
+  showContactButton = true
+} = Astro.props;
+---
+
+<div class="bg-gray-50 rounded-lg p-8 text-center">
+  <h2 class="text-2xl font-bold text-gray-900 mb-4">{title}</h2>
+  {description && (
+    <p class="text-lg text-gray-700 mb-6">{description}</p>
+  )}
+  <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+    <a href="https://www.tebra.com/care/provider/richard-samson-dpm-1447251913" target="_blank" class="inline-block bg-gray-900 hover:bg-gray-800 text-white text-lg font-medium px-8 py-3 rounded-md hover:text-blue-300 transition-all duration-300 no-underline">
+      Book Your Appointment
+    </a>
+    {showContactButton && (
+      <a href="/contact/" class="inline-block bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium px-8 py-3 rounded-md transition-all duration-300 no-underline">
+        Contact Us
+      </a>
+    )}
+  </div>
+</div>

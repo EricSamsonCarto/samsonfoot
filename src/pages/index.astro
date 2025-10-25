@@ -1,49 +1,208 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import LandingLayout from '../layouts/LandingLayout.astro';
+import { Image } from 'astro:assets';
+import headshotImage from '../../public/headshot.jpg';
+import certImage from '../../public/cert.png';
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
-</html>
+<LandingLayout title="Samson Foot and Ankle">
+	<section class="hero-gradient min-h-[70vh] flex flex-col items-center justify-center px-6 sm:px-8 lg:px-12 pb-1">
+		<div class="text-center max-w-4xl mx-auto">
+			<div class="hero-text mb-4">
+				<div class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+					<div class="word text-gray-900">Welcome</div>
+					<div class="word text-gray-900">To Your</div>
+					<div class="word text-blue-600">Next Best Step</div>
+				</div>
+			</div>
+
+			<!-- Button Groups -->
+			<div class="buttons-section space-y-4 md:space-y-6">
+				<!-- First row: Two buttons inline -->
+				<div class="buttons-row-1 flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center">
+					<a href="#meet-doctor" class="inline-block bg-blue-600 hover:bg-blue-700 text-white text-base md:text-xl font-medium px-5 md:px-8 py-2 md:py-4 rounded-md transition-all duration-300 no-underline">
+						Meet Your Doctor
+					</a>
+					<a href="#direct-care" class="inline-block bg-blue-600 hover:bg-blue-700 text-white text-base md:text-xl font-medium px-5 md:px-8 py-2 md:py-4 rounded-md transition-all duration-300 no-underline">
+						What is Direct Care?
+					</a>
+				</div>
+
+				<!-- Second row: Book appointment button -->
+				<div class="buttons-row-2 text-center">
+					<a href="https://www.tebra.com/care/provider/richard-samson-dpm-1447251913" target="_blank" class="inline-block bg-gray-900 hover:bg-gray-800 text-white text-base md:text-xl font-medium px-5 md:px-8 py-2 md:py-4 rounded-md hover:text-blue-300 transition-all duration-300 no-underline">
+						Book Your Appointment
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="meet-doctor" class="py-8 bg-white">
+		<div class="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+			<div  class="text-center mb-2 md:mb-12">
+				<h2 class="text-2xl md:text-4xl font-bold text-gray-900 mb-1 md:mb-2">Richard T. Samson, DPM</h2>
+				<p class="text-base md:text-lg text-blue-600 font-medium mb-1">Diplomate, American Board of Foot and Ankle Surgery®</p>
+			</div>
+
+			<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-start">
+				<div class="lg:col-span-2 order-2 lg:order-1">
+					<p class="text-lg text-gray-700 leading-relaxed mb-2">
+						An avid skier and the best father of the year award winner, Dr. Samson brings the same precision to podiatric surgery that 
+            he applies to navigating black diamond slopes. When he's not transforming lives one foot at a time, you'll find him chugging 
+            beers and driving boats, plotting his next home improvement project.
+					</p>
+					<p class="text-lg text-gray-700 leading-relaxed mb-2">
+						Known around the office as someone who can fix both your plantar fasciitis and your fantasy football lineup, Dr. Samson believes 
+            that good medicine starts with good relationships. His patients often joke that they come for the outstanding surgical outcomes but stay for the conversation.
+					</p>
+					<p class="text-lg text-gray-700 leading-relaxed">
+						Whether he's reconstructing a complex ankle injury or explaining why your flat skateboard shoes are plotting against you, 
+            Dr. Samson combines decades of surgical expertise with an approach that makes even the most anxious patients feel like they're 
+            chatting with an old friend. An old friend who just happens to be really, really good at fixing feet.
+					</p>
+				</div>
+
+				<div class="lg:col-span-1 order-1 lg:order-2 flex justify-center lg:justify-end">
+					<Image src={headshotImage} alt="Dr. Richard T. Samson" class="w-84 h-98 object-cover rounded-full shadow-lg" loading="eager" />
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="py-16 bg-gray-50">
+		<div class="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+			<div class="space-y-4">
+				<div class="flex flex-row items-center gap-4 md:gap-8 lg:gap-12">
+					<div class="flex-shrink-0 w-24 sm:w-28 md:w-32 lg:w-48">
+						<Image src={certImage} alt="Medical Certification" class="w-full h-auto" />
+					</div>
+
+					<div class="flex-1">
+						<h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900">Board Certified Excellence</h2>
+					</div>
+				</div>
+
+				<div class="w-full">
+					<p class="text-gray-700 leading-relaxed">
+						Dr. Samson is a Diplomate of the American Board of Foot and Ankle Surgery, representing the highest level of certification in podiatric surgery. This prestigious credential requires rigorous training, comprehensive examinations, and demonstrated surgical competency in both foot surgery and reconstructive rearfoot/ankle surgery—ensuring you receive care from a surgeon who meets the most demanding professional standards.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+  <section id="direct-care" class="py-8 bg-white">
+		<div class="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+			<div class="text-center max-w-4xl mx-auto">
+				<h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Direct Patient Care</h2>
+				<p class="text-lg text-gray-700 leading-relaxed mb-6">
+					Experience healthcare the way it should be—transparent, personal, and focused entirely on you. Our direct care model eliminates insurance hassles and allows Dr. Samson to spend quality time addressing your foot and ankle concerns without external pressures. Say goodbye to surprise bills, long waits for approvals, and rushed appointments.
+				</p>
+				<div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+					<a href="/blog/direct-pay/" class="inline-block bg-gray-900 hover:bg-gray-800 text-white text-lg font-medium px-8 py-3 rounded-md hover:text-blue-300 transition-all duration-300 no-underline">
+						Learn More About Direct Care
+					</a>
+					<a href="/faq/" class="inline-block bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium px-8 py-3 rounded-md transition-all duration-300 no-underline">
+						Frequently Asked Questions
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</LandingLayout>
+
+<style>
+  .hero-text .word {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 0.6s ease-out;
+  }
+
+  .hero-text .word.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .hero-text .word.animate-special {
+    transform: translateX(0) scale(1.1);
+    transition: all .8s ease-out;
+  }
+
+  .hero-text .word.animate-settle {
+    transform: translateX(0) scale(1);
+  }
+
+  .buttons-section {
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+  }
+
+  .buttons-section.fade-in {
+    opacity: 1;
+  }
+
+  .hero-gradient {
+    background: linear-gradient(300deg, #f8fafc, #e2eefe, #91b5fa);
+    background-size: 180% 180%;
+    animation: gradient-animation 4s ease infinite;
+  }
+
+  @keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const words = document.querySelectorAll<HTMLElement>('.hero-text .word');
+    const buttonsSection = document.querySelector('.buttons-section');
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      words.forEach(word => {
+        word.style.opacity = '1';
+        word.style.transform = 'translateX(0)';
+      });
+      if (buttonsSection instanceof HTMLElement) {
+        buttonsSection.style.opacity = '1';
+      }
+      return;
+    }
+
+    // Animate words
+    setTimeout(() => {
+      words[0]?.classList.add('animate-in');
+    }, 150);
+
+    setTimeout(() => {
+      words[1]?.classList.add('animate-in');
+    }, 400);
+
+    setTimeout(() => {
+      words[2]?.classList.add('animate-in', 'animate-special');
+
+      setTimeout(() => {
+        words[2]?.classList.remove('animate-special');
+        words[2]?.classList.add('animate-settle');
+      }, 400);
+
+      // Show buttons after text animation
+      setTimeout(() => {
+        if (buttonsSection instanceof HTMLElement) {
+          buttonsSection.classList.add('fade-in');
+        }
+      }, 600);
+    }, 650);
+  });
+</script>

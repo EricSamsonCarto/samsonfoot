@@ -1,0 +1,157 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import CallToAction from '../../components/CallToAction.astro';
+
+const officePhotos = [
+  '/office/IMG_8613.JPEG',
+  '/office/IMG_8618.JPEG',
+  '/office/IMG_8632.JPEG'
+];
+---
+
+<ContentLayout title="Our Office - Samson Foot and Ankle">
+  <!-- carousel -->
+  <!-- <section class="mb-5 w-full max-w-2xl mx-auto">
+    <div>
+      <div id="office-carousel" class="splide">
+        <div class="splide__track">
+          <ul class="splide__list">
+            {officePhotos.map((photo, index) => (
+              <li class="splide__slide">
+                <img
+                  src={photo}
+                  alt={`Office photo ${index + 1}`}
+                  class="w-full h-auto rounded-lg shadow-lg"
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- address and directions -->
+  <section class="mb-4 mt-3 w-full max-w-xl mx-auto">
+    <div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-start pl-4">
+
+        <!-- address and phone -->
+        <div class="space-y-4">
+          <h2 class="text-2xl font-bold text-gray-900 -mb-2">Visit Our Office</h2>
+
+          <div class="space-y-3">
+            <div>
+              <p class="text-gray-600 leading-relaxed">
+				<h3 class="text-lg font-semibold text-gray-800 mb-1">Address</h3>
+                20 Main St<br>
+                Oakland, ME 04963
+              </p>
+            </div>
+
+            <div>
+              <p class="text-gray-600">
+				        <h3 class="text-lg font-semibold text-gray-800 mb-1">Phone</h3>
+                <a href="tel:5551234668" class="text-blue-600 hover:text-blue-700 transition-colors no-underline">
+                  207-458-1809
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- map links -->
+        <div class="space-y-4">
+          <h2 class="text-2xl font-bold text-gray-900">Get Directions</h2>
+
+          <div class="flex flex-col items-start space-y-4">
+            <a
+              href="https://maps.app.goo.gl/iUhDYVSQce5nRF3f7"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block bg-gray-900 hover:bg-gray-800 text-white text-base font-medium px-4 py-2 rounded-md hover:text-blue-300 transition-all duration-300 no-underline"
+            >
+              🗺️ Open in Google Maps
+            </a>
+
+            <a
+              href="https://maps.apple.com/place?address=20+Main+St%2C+Oakland%2C+ME++04963%2C+United+States&coordinate=44.5474685%2C-69.7150203&name=20+Main+St"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block bg-gray-900 hover:bg-gray-800 text-white text-base font-medium px-4 py-2 rounded-md hover:text-blue-300 transition-all duration-300 no-underline"
+            >
+              🍎 Open in Apple Maps
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- leaflet map -->
+  <section class="mb-8 w-full max-w-2xl mx-auto">
+    <div>
+      <div id="office-map" class="w-full h-80 rounded-lg shadow-lg border border-gray-200"></div>
+    </div>
+  </section>
+
+  <div>
+    <CallToAction
+      title="Ready to Experience Direct Care?"
+      description="Take the first step toward personalized, hassle-free podiatric care."
+      showContactButton={false}
+    />
+  </div>
+</ContentLayout>
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+<script>
+  import { Splide } from '@splidejs/splide';
+  import L from 'leaflet';
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // const carousel = new Splide('#office-carousel', {
+    //   type: 'loop',
+    //   autoplay: true,
+    //   interval: 5000,
+    //   arrows: true,
+    //   pagination: true,
+    // });
+
+    // carousel.mount();
+
+    const map = L.map('office-map').setView([44.547585, -69.714991], 15);
+
+    var Stadia_OSMBright = L.tileLayer('https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.{ext}', {
+      minZoom: 0,
+      maxZoom: 20,
+      attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      ext: 'png'
+    } as any).addTo(map);
+
+    L.marker([44.547585, -69.714991]).addTo(map)
+      .bindPopup('Samson Foot and Ankle<br>123 Medical Plaza, Suite 200<br>Oakland, Maine')
+      .openPopup();
+
+    fetch('/office/office_location.geojson')
+      .then(response => response.json())
+      .then(data => {
+        L.geoJSON(data, {
+          style: {
+            color: 'red',
+            weight: 2,
+            fillColor: 'red',
+            fillOpacity: 0.2
+          }
+        }).addTo(map);
+      })
+      .catch(error => {
+        console.error('Error loading GeoJSON:', error);
+      });
+  });
+</script>
