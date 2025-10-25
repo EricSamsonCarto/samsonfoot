@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+/* Prevent iOS from auto-styling phone numbers with purple color */
+a[href^="tel"] {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Ensure Leaflet map doesn't overlay the sticky header */
+.leaflet-pane,
+.leaflet-map-pane,
+.leaflet-container {
+  z-index: 1 !important;
+}
