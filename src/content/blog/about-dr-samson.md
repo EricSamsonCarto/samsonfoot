@@ -1,0 +1,16 @@
+---
+title: "Introducing Samson Foot + Ankle: A Return to Private Practice"
+description: "Dr. Richard Samson brings decades of surgical expertise back to private practice with a streamlined, patient-first approach."
+publishDate: 2025-10-25
+author: "Dr. Richard T. Samson"
+image: "/blog/diabetic-care/foot-diagram.jpg"
+---
+
+Richard Samson, DPM, is an experienced podiatrist and foot and ankle surgeon who has worked in the Waterville area for almost 30 years. He moved here from Philadelphia in 1996 with his wife Susan and four children, after completing a four-year residency program in foot and ankle surgery at UPenn Presbyterian Medical Center. Prior to this, he completed medical school at Temple University School of Medicine, Department of Podiatry (then known as Pennsylvania College of Podiatric Medicine), becoming a Doctor of Podiatric Medicine. Once here, he became the first podiatrist in the state of Maine to be granted surgical privileges for the ankle (in addition to the foot). Due to the substantial need for foot and ankle care, he was active at four local hospitals and was an associate of Douglas O'Heir, DPM.
+
+After founding Waterville Foot & Ankle Center in 1999, the practice ran successfully until its merger with Inland Podiatry in 2014. Here he joined with Jared Wilkinson, DPM and Hilary Lee, FNP, forming a well-known and respected podiatry/foot and ankle surgery/lower extremity wound care group. However, with the sudden and unfortunate closing of Northern Light Inland Hospital in 2025, he has decided to return to his private practice roots and form Samson Foot + Ankle in Oakland.
+
+The task of initiating private practice in this modern world of electronic records, artificial intelligence-aided medical notes, governmental oversight, and health insurance-regulated billing practices is daunting. Indeed, these reasons played a large role in prompting the merger of Waterville Foot & Ankle with Inland in 2014. For this reason, the new private practice will look to streamline these processes and eliminate "red tape" and health insurance hurdles.
+
+Samson Foot + Ankle will operate under the "Direct Care" model. This model requires no health insurance, no PCP referral, no prior authorization, and no complex coding or medical necessity hurdles. Although the patient does pay upfront, the costs are typically much lower than a hospital-based practice, and the charges can be submitted to private insurance for reimbursement. Although this does not apply to Medicare and MaineCare patients, the care received is worth the cost due to shorter waiting times, longer office visits, and generally more time spent with the physician who is free from time-consuming and laborious paperwork tasks.
+Additionally, Dr. Samson has joined the staff at MaineGeneral Medical Center in Waterville in order to perform surgical procedures at Thayer Campus. Fortunately, this more expensive aspect of podiatric care is covered by most all insurances, since the hospital maintains its contracts with health insurance companies and bills the patient's insurance directly for these procedures.
