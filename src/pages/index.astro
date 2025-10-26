@@ -1,11 +1,53 @@
 ---
 import LandingLayout from '../layouts/LandingLayout.astro';
 import { Image } from 'astro:assets';
-import headshotImage from '../../public/headshot.jpg';
+import headshotImage from '../../public/headshot_optimized.jpg';
 import certImage from '../../public/cert.png';
 ---
 
 <LandingLayout title="Samson Foot and Ankle">
+	<script type="application/ld+json" slot="head">
+		{
+			"@context": "https://schema.org",
+			"@type": "MedicalBusiness",
+			"name": "Samson Foot + Ankle",
+			"alternateName": ["Samson Foot and Ankle", "Samson Podiatry"],
+			"description": "Direct care podiatric practice in Oakland, Maine specializing in foot and ankle surgery",
+			"url": "https://samsonfoot.com",
+			"telephone": "207-458-1809",
+			"address": {
+				"@type": "PostalAddress",
+				"streetAddress": "20 Main St",
+				"addressLocality": "Oakland",
+				"addressRegion": "ME",
+				"postalCode": "04963",
+				"addressCountry": "US"
+			},
+			"geo": {
+				"@type": "GeoCoordinates",
+				"latitude": 44.547585,
+				"longitude": -69.714991
+			},
+			"areaServed": [
+				{
+					"@type": "City",
+					"name": "Oakland"
+				},
+				{
+					"@type": "City",
+					"name": "Waterville"
+				},
+				{
+					"@type": "State",
+					"name": "Maine"
+				}
+			],
+			"medicalSpecialty": ["Podiatry", "Foot and Ankle Surgery"],
+			"priceRange": "$$",
+			"paymentAccepted": "Cash, Check, Card",
+			"openingHours": "Mo,Tu,We,Th,Fr 09:00-17:00"
+		}
+	</script>
 	<section class="hero-gradient min-h-[70vh] flex flex-col items-center justify-center px-6 sm:px-8 lg:px-12 pb-1">
 		<div class="text-center max-w-4xl mx-auto">
 			<div class="hero-text mb-4">

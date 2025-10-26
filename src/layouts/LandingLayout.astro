@@ -13,11 +13,20 @@ const { title } = Astro.props;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Samson Foot and Ankle" />
+    <meta name="description" content="Samson Foot + Ankle - Oakland, Maine podiatrist specializing in direct care foot and ankle surgery. Expert podiatric care serving Oakland, Waterville, and central Maine." />
+    <meta name="keywords" content="Samson Foot and Ankle, Samson Podiatry, Oakland podiatrist, Maine podiatry, Oakland Maine foot doctor, foot and ankle surgeon Maine, Dr Richard Samson, direct care podiatry" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Samson Foot + Ankle - Oakland Maine Podiatrist" />
+    <meta property="og:description" content="Expert podiatric care in Oakland, Maine. Direct care foot and ankle surgery serving Oakland, Waterville, and central Maine." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://samsonfoot.com" />
+
     <title>{title}</title>
+    <slot name="head" />
   </head>
   <body class="bg-gray-50 text-gray-700 font-sans m-0 p-0 min-h-screen flex flex-col">
     <Header />
