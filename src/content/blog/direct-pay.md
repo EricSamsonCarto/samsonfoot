@@ -1,6 +1,6 @@
 ---
-title: "Direct Podiatric Care: A Patient-Centered Approach"
-description: "Explore how Direct podiatric care eliminates insurance barriers and prioritizes your health outcomes."
+title: "Direct Care Podiatric Care: A Patient-Centered Approach"
+description: "Explore how Direct Podiatric Care eliminates insurance barriers and prioritizes your health outcomes."
 publishDate: 2025-09-14
 author: "Dr. Richard T. Samson"
 image: "/blog/direct-care/freedom.jpg"
@@ -8,7 +8,7 @@ image: "/blog/direct-care/freedom.jpg"
 
 # Direct Care Podiatric Care: A Patient-Centered Approach
 
-When foot pain strikes, traditional healthcare often introduces unnecessary delays and complications. Direct Care podiatric care offers a streamlined alternative that prioritizes your health over administrative processes.
+When foot pain strikes, traditional healthcare often introduces unnecessary delays and complications. Direct Care - podiatric care offers a streamlined alternative that prioritizes your health over administrative processes.
 
 ## Understanding Direct Care Healthcare
 

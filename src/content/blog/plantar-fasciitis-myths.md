@@ -34,7 +34,7 @@ While custom orthotics can be incredibly helpful for many people, they're not a 
 
 **The Modern Truth:** Surgery is rarely the first—or even second—best option.
 
-Today's treatment options are far more sophisticated than they were even a decade ago. Shockwave therapy, platelet-rich plasma (PRP), and targeted physical therapy protocols often resolve even stubborn cases without going under the knife.
+Today's treatment options are far more sophisticated than they were even a decade ago. Orthotic therapy, anti-inflammatory therapy, and targeted physical therapy protocols often resolve even stubborn cases without going under the knife.
 
 ## Myth #5: "Once You Have It, You'll Always Have Problems"
 

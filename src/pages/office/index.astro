@@ -92,7 +92,7 @@ const officePhotos = [
   <!-- leaflet map -->
   <section class="mb-8 w-full max-w-2xl mx-auto">
     <div>
-      <div id="office-map" class="w-full h-80 rounded-lg shadow-lg border border-gray-200"></div>
+      <div id="office-map" class="w-full h-80 rounded-lg shadow-lg border border-gray-200" style="z-index: 1; position: relative;"></div>
     </div>
   </section>
 
@@ -108,50 +108,61 @@ const officePhotos = [
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<!-- Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<!-- Maplibre GL -->
+<link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
 
 <script>
   import { Splide } from '@splidejs/splide';
-  import L from 'leaflet';
 
-  document.addEventListener('DOMContentLoaded', function() {
-    // const carousel = new Splide('#office-carousel', {
-    //   type: 'loop',
-    //   autoplay: true,
-    //   interval: 5000,
-    //   arrows: true,
-    //   pagination: true,
-    // });
+  // Load external scripts dynamically
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = src;
+      script.onload = resolve;
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
+  }
 
-    // carousel.mount();
+  document.addEventListener('DOMContentLoaded', async function() {
+    // Load Leaflet and MapLibre libraries in order
+    try {
+      await loadScript('https://unpkg.com/leaflet/dist/leaflet.js');
+      await loadScript('https://unpkg.com/maplibre-gl/dist/maplibre-gl.js');
+      await loadScript('https://unpkg.com/@maplibre/maplibre-gl-leaflet/leaflet-maplibre-gl.js');
 
-    const map = L.map('office-map').setView([44.547585, -69.714991], 15);
+      // Now initialize the map
+      const map = (window as any).L.map('office-map').setView([44.547585, -69.714991], 15);
 
-    var Stadia_OSMBright = L.tileLayer('https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.{ext}', {
-      minZoom: 0,
-      maxZoom: 20,
-      attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      ext: 'png'
-    } as any).addTo(map);
+      (window as any).L.maplibreGL({
+        style: 'https://tiles.openfreemap.org/styles/liberty',
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
 
-    L.marker([44.547585, -69.714991]).addTo(map)
-      .bindPopup('Samson Foot and Ankle<br>123 Medical Plaza, Suite 200<br>Oakland, Maine')
-      .openPopup();
+      (window as any).L.marker([44.547585, -69.714991]).addTo(map)
+        .bindPopup('Samson Foot and Ankle<br>20 Main St<br>Oakland, ME 04963')
+        .openPopup();
 
-    fetch('/office/office_location.geojson')
-      .then(response => response.json())
-      .then(data => {
-        L.geoJSON(data, {
-          style: {
-            color: 'red',
-            weight: 2,
-            fillColor: 'red',
-            fillOpacity: 0.2
-          }
-        }).addTo(map);
-      })
-      .catch(error => {
-        console.error('Error loading GeoJSON:', error);
-      });
+      fetch('/office/office_location.geojson')
+        .then(response => response.json())
+        .then(data => {
+          (window as any).L.geoJSON(data, {
+            style: {
+              color: 'red',
+              weight: 2,
+              fillColor: 'red',
+              fillOpacity: 0.2
+            }
+          }).addTo(map);
+        })
+        .catch(error => {
+          console.error('Error loading GeoJSON:', error);
+        });
+    } catch (error) {
+      console.error('Error loading map libraries:', error);
+    }
   });
 </script>
