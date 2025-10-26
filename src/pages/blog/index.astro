@@ -1,5 +1,6 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import CallToAction from '../../components/CallToAction.astro';
 
@@ -33,10 +34,13 @@ function formatDate(date: Date): string {
           {post.data.image && (
             <div class="aspect-video overflow-hidden">
               <a href={`/blog/${post.slug}`} class="block">
-                <img
+                <Image
                   src={post.data.image}
                   alt={post.data.title}
                   class="w-full h-full object-cover hover:scale-105 transition-transform duration-300 cursor-pointer"
+                  width={800}
+                  height={450}
+                  loading="eager"
                 />
               </a>
             </div>
