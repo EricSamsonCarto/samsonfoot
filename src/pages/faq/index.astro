@@ -3,7 +3,63 @@ import ContentLayout from '../../layouts/ContentLayout.astro';
 import CallToAction from '../../components/CallToAction.astro';
 ---
 
-<ContentLayout title="Frequently Asked Questions">
+<ContentLayout title="Frequently Asked Questions - Samson Foot and Ankle" description="Common questions about direct care podiatry at Samson Foot + Ankle in Oakland, Maine. Learn about pricing, insurance reimbursement, and scheduling with Dr. Samson.">
+  <script type="application/ld+json" slot="head">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is direct care healthcare and how does it work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Direct care healthcare is a practice model where patients pay directly for medical services without involving insurance companies. This eliminates the administrative overhead, pre-authorizations, and delays often associated with insurance-based care. You pay a transparent, upfront fee for your visit and treatments, allowing Dr. Samson to focus entirely on your care rather than insurance paperwork."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the benefits of choosing direct care over insurance-based care?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Direct care offers several key advantages: transparent pricing with no surprise bills, faster appointment scheduling without waiting for insurance approvals, longer appointment times focused on your needs, direct communication with Dr. Samson, and often lower overall costs compared to insurance copays and deductibles. You also maintain complete control over your healthcare decisions without insurance company restrictions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much do direct care appointments and treatments cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our pricing is transparent and competitive. Many patients find that direct care costs are comparable to or less than their insurance copays and deductibles, especially when factoring in the convenience and quality of care. We provide detailed pricing information during your initial consultation so there are never any surprises."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I submit receipts to my insurance for reimbursement?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Many insurance plans offer out-of-network benefits that can reimburse you for direct care services. We provide detailed receipts with all necessary medical codes and information that you can submit to your insurance company. While reimbursement rates vary by plan, many insurers reimburse 50-80% of out-of-network services once you've met your deductible."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I still use my health insurance for other medical needs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely! Choosing direct care for your podiatric care doesn't affect your ability to use insurance for other healthcare needs. Many patients appreciate having the option to use direct care for routine foot and ankle care while maintaining their insurance for other medical services, emergencies, or specialist referrals outside our practice."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I schedule an appointment and what should I expect?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Scheduling is simple and fast—just call our office or use our online booking system. Since we don't need insurance pre-approvals, we can often accommodate appointments quickly. During your visit, expect Dr. Samson's full attention without time pressures from insurance constraints. Payment is due at the time of service and can be made by cash, check, or card."
+          }
+        }
+      ]
+    }
+  </script>
   <div class="max-w-4xl mx-auto px-4 sm:px-6">
     <div class="text-center mb-8">
       <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h1>

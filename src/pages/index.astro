@@ -45,7 +45,53 @@ import certImage from '../../public/cert.png';
 			"medicalSpecialty": ["Podiatry", "Foot and Ankle Surgery"],
 			"priceRange": "$$",
 			"paymentAccepted": "Cash, Check, Card",
-			"openingHours": "Mo,Tu,We,Th,Fr 09:00-17:00"
+			"openingHours": "Tu,We,Th, 09:00-17:00"
+		}
+	</script>
+	<script type="application/ld+json" slot="head">
+		{
+			"@context": "https://schema.org",
+			"@type": "Physician",
+			"name": "Dr. Richard T. Samson, DPM",
+			"description": "Board-certified podiatrist and foot and ankle surgeon with over 30 years of experience serving Oakland, Waterville, Augusta, and central Maine.",
+			"url": "https://samsonfoot.com",
+			"telephone": "207-458-1809",
+			"medicalSpecialty": "Podiatry",
+			"qualification": [
+				"Doctor of Podiatric Medicine (DPM)",
+				"Diplomate, American Board of Foot and Ankle Surgery"
+			],
+			"alumniOf": [
+				{
+					"@type": "EducationalOrganization",
+					"name": "Temple University School of Podiatric Medicine"
+				},
+				{
+					"@type": "EducationalOrganization",
+					"name": "UPenn Presbyterian Medical Center"
+				}
+			],
+			"worksFor": {
+				"@type": "MedicalBusiness",
+				"name": "Samson Foot + Ankle",
+				"url": "https://samsonfoot.com"
+			},
+			"address": {
+				"@type": "PostalAddress",
+				"streetAddress": "20 Main St",
+				"addressLocality": "Oakland",
+				"addressRegion": "ME",
+				"postalCode": "04963",
+				"addressCountry": "US"
+			},
+			"areaServed": [
+				{ "@type": "City", "name": "Fairfield" },
+				{ "@type": "City", "name": "Winslow" },
+				{ "@type": "City", "name": "Oakland" },
+				{ "@type": "City", "name": "Waterville" },
+				{ "@type": "City", "name": "Augusta" },
+				{ "@type": "State", "name": "Maine" }
+			]
 		}
 	</script>
 	<section class="hero-gradient min-h-[70vh] flex flex-col items-center justify-center px-6 sm:px-8 lg:px-12 pb-1">
