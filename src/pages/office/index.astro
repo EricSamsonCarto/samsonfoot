@@ -116,53 +116,64 @@ const officePhotos = [
 <script>
   import { Splide } from '@splidejs/splide';
 
-  // Load external scripts dynamically
-  function loadScript(src: string) {
+  function loadScript(src: string): Promise<void> {
     return new Promise((resolve, reject) => {
       const script = document.createElement('script');
       script.src = src;
-      script.onload = resolve;
-      script.onerror = reject;
+      script.onload = () => resolve();
+      script.onerror = () => reject(new Error(`Failed to load: ${src}`));
       document.head.appendChild(script);
     });
   }
 
-  document.addEventListener('DOMContentLoaded', async function() {
-    // Load Leaflet and MapLibre libraries in order
+  document.addEventListener('DOMContentLoaded', async () => {
     try {
-      await loadScript('https://unpkg.com/leaflet/dist/leaflet.js');
-      await loadScript('https://unpkg.com/maplibre-gl/dist/maplibre-gl.js');
-      await loadScript('https://unpkg.com/@maplibre/maplibre-gl-leaflet/leaflet-maplibre-gl.js');
+      await loadScript('https://unpkg.com/leaflet@1.9.4/dist/leaflet.js');
+      await loadScript('https://unpkg.com/maplibre-gl@5.7.0/dist/maplibre-gl.js');
+      await loadScript(
+        'https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.1.0/leaflet-maplibre-gl.js'
+      );
 
-      // Now initialize the map
-      const map = (window as any).L.map('office-map').setView([44.547585, -69.714991], 15);
+      const L = (window as any).L;
 
-      (window as any).L.maplibreGL({
+      const map = L.map('office-map').setView(
+        [44.547585, -69.714991],
+        15
+      );
+
+      L.maplibreGL({
         style: 'https://tiles.openfreemap.org/styles/liberty',
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map);
 
-      (window as any).L.marker([44.547585, -69.714991]).addTo(map)
-        .bindPopup('Samson Foot and Ankle<br>20 Main St<br>Oakland, ME 04963')
+      L.marker([44.547585, -69.714991])
+        .addTo(map)
+        .bindPopup(
+          'Samson Foot and Ankle<br>20 Main St<br>Oakland, ME 04963'
+        )
         .openPopup();
 
-      fetch('/office/office_location.geojson')
-        .then(response => response.json())
-        .then(data => {
-          (window as any).L.geoJSON(data, {
-            style: {
-              color: 'red',
-              weight: 2,
-              fillColor: 'red',
-              fillOpacity: 0.2
-            }
-          }).addTo(map);
-        })
-        .catch(error => {
-          console.error('Error loading GeoJSON:', error);
-        });
+      const response = await fetch('/office/office_location.geojson');
+
+      if (!response.ok) {
+        throw new Error(
+          `Failed to load GeoJSON: ${response.status} ${response.statusText}`
+        );
+      }
+
+      const data = await response.json();
+
+      L.geoJSON(data, {
+        style: {
+          color: 'red',
+          weight: 2,
+          fillColor: 'red',
+          fillOpacity: 0.2
+        }
+      }).addTo(map);
     } catch (error) {
-      console.error('Error loading map libraries:', error);
+      console.error('Error loading map libraries or map data:', error);
     }
   });
 </script>
